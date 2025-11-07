@@ -29,7 +29,7 @@ class KPH_Admin_Settings {
         $options = get_option('kph_importer_options');
         ?>
         <div class="wrap">
-            <h1><?php _e('Event Image Bot Settings', 'kph-importer'); ?> (v1.0)</h1>
+            <h1><?php _e('Import Settings', 'kph-importer'); ?> (v1.0)</h1>
             
             <?php
             $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'settings';
@@ -57,25 +57,25 @@ class KPH_Admin_Settings {
                 </form>
                 <hr>
                 <div class="kph-manual-import">
-                    <h2><?php _e('Manual Import', 'kph-ical-importer'); ?></h2>
+                    <h2><?php _e('Manual Import', 'event-image-bot'); ?></h2>
                     <p><?php _e('Test the import process manually. This will fetch new events from your iCal URLs.', 'kph-ical-importer'); ?></p>
                     <form method="post" action="">
                         <input type="hidden" name="kph_manual_import_nonce" value="<?php echo wp_create_nonce('kph_manual_import'); ?>" />
-                        <?php submit_button(__('Import Now', 'kph-ical-importer'), 'secondary', 'kph_manual_import_submit'); ?>
+                        <?php submit_button(__('Import Now', 'event-image-bot'), 'secondary', 'kph_manual_import_submit'); ?>
                     </form>
                 </div>
 
             <?php elseif ($active_tab == 'logs') : ?>
                 <div class="kph-logs-wrap">
-                    <h2><?php _e('Automatic Import Log', 'kph-ical-importer'); ?></h2>
+                    <h2><?php _e('Automatic Import Log', 'event-image-bot'); ?></h2>
                     <p><?php _e('Showing the summary of the last 10 scheduled imports (runs twice daily).', 'kph-ical-importer'); ?></p>
                     <?php $this->display_cron_logs(); ?>
 
-                    <h2><?php _e('Detailed Log of Last Import', 'kph-ical-importer'); ?></h2>
+                    <h2><?php _e('Detailed Log of Last Import', 'event-image-bot'); ?></h2>
                     <p><?php _e('This log shows a detailed breakdown of the most recent import run (manual or automatic).', 'kph-ical-importer'); ?></p>
                     <?php $this->display_detailed_log(); ?>
 
-                    <h2><?php _e('Raw iCal Data', 'kph-ical-importer'); ?></h2>
+                    <h2><?php _e('Raw iCal Data', 'event-image-bot'); ?></h2>
                     <p><?php _e('This is the raw .ics data from the last successful fetch. For debugging purposes.', 'kph-ical-importer'); ?></p>
                     <textarea readonly style="width: 100%; height: 300px; background: #f9f9f9;"><?php echo esc_textarea(get_option('kph_importer_last_raw_ical', 'No data fetched yet.')); ?></textarea>
                 </div>
@@ -97,14 +97,14 @@ class KPH_Admin_Settings {
 
         add_settings_section(
             'kph_setting_section_id',
-            __('iCal Feed Settings', 'kph-ical-importer'),
+            __('iCal Feed Settings', 'event-image-bot'),
             null,
             'kph-importer-admin-section'
         );
 
         add_settings_field(
             'ical_urls',
-            __('iCal Feed URLs (one per line)', 'kph-ical-importer'),
+            __('iCal Feed URLs (one per line)', 'event-image-bot'),
             [$this, 'ical_urls_callback'],
             'kph-importer-admin-section',
             'kph_setting_section_id'
