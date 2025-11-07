@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Event Flyer Generator & Importer
+ * Plugin Name:       Event Image Generator
  * Description:       Imports events from iCal/.ics feeds, cleans titles, generates flyer images, and supports major calendar plugins.
- * Version:           1.4.0
- * Author:            Your Name / Gemini
+ * Version:           0.4.0
+ * Author:            Liibooz
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       kph-ical-importer
@@ -36,7 +36,6 @@ require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-admin-settings.php';
 require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-location-manager.php';
 require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-organizer-settings.php';
 require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-event-header-generator.php';
-require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-admin-columns.php';
 require_once KPH_ICAL_IMPORTER_PATH . 'includes/class-kph-event-cleanup.php';
 
 
@@ -60,7 +59,6 @@ function kph_ical_importer_init() {
     new KPH_Location_Manager($adapter);
     new KPH_Organizer_Settings($adapter);
     new KPH_Event_Header_Generator($adapter);
-    new KPH_Admin_Columns($adapter);
     new KPH_Event_Cleanup($adapter);
     
     // Welcome screen redirect
